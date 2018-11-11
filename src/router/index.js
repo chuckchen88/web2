@@ -14,6 +14,8 @@ import PersonalNews from '@/views/PersonalNews'
 import NewsDetails from '@/views/NewsDetails'
 import Blog from '@/views/Blog'
 import BlogDetails from '@/views/BlogDetails'
+import AccountActive from '@/views/AccountActive'  //账户激活页
+import ShowMessage from '@/views/ShowMessage'  //公共消息提示页
 
 Vue.use(Router)
 //Vue.use(Meta)
@@ -36,6 +38,11 @@ export default new Router({
             component: LeaveWords
         },
         {
+            path: '/leavewords/:id',
+            name: 'LeaveWordsById',
+            component: LeaveWords
+        },
+        {
             path: '/sign',
             name: 'Sign',
             component: Sign
@@ -51,7 +58,7 @@ export default new Router({
             component: LostPass
         },
         {
-            path: '/changepass',
+            path: '/ChangePass/:key/:name',
             name: 'ChangePass',
             component: ChangePass
         },
@@ -84,6 +91,16 @@ export default new Router({
             path: '/blog/BlogDetails/:id',
             name: 'BlogDetails',
             component: BlogDetails
+        },
+        {
+            path: '/AccountActive/:key/:name',
+            name: 'AccountActive',
+            component: AccountActive
+        },
+        {
+            path: '/ShowMessage',
+            name: 'ShowMessage',
+            component: ShowMessage
         }
      ]
 })

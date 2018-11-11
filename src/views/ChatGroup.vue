@@ -51,7 +51,7 @@
                     <div class="con">
                         <h3>chuck</h3>
                         <div class="info">
-                            你能把我怎么地哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈
+                            你能把我怎么地哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -61,7 +61,27 @@
                     <div class="fl-l con">
                         <h3>chuck</h3>
                         <div class="info">
-                            你能把我怎么地哈哈哈哈哈哈哈哈哈哈
+                            你能把我怎么地哈哈哈哈
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="list">
+                    <div class="head-img"><img src="../assets/images/head-img.png"></div>
+                    <div class="con">
+                        <h3>chuck</h3>
+                        <div class="info">
+                            你能把我怎
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="list own">
+                    <div class="head-img"><img src="../assets/images/head-img.png"></div>
+                    <div class="fl-l con">
+                        <h3>chuck</h3>
+                        <div class="info">
+                            你能把我怎么地哈哈
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -81,27 +101,7 @@
                     <div class="fl-l con">
                         <h3>chuck</h3>
                         <div class="info">
-                            你能把我怎么地哈哈哈哈哈哈哈哈哈哈
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="list">
-                    <div class="head-img"><img src="../assets/images/head-img.png"></div>
-                    <div class="con">
-                        <h3>chuck</h3>
-                        <div class="info">
-                            你能把我怎么地哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="list own">
-                    <div class="head-img"><img src="../assets/images/head-img.png"></div>
-                    <div class="fl-l con">
-                        <h3>chuck</h3>
-                        <div class="info">
-                            你能把我怎么地哈哈哈哈哈哈哈哈哈哈<img data-v-378b9486="" src="static/images/emoji/1.png">
+                            你能把我怎么地哈哈哈哈<img src="/static/images/emoji/1.png">
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -110,7 +110,7 @@
             <div class="input">
                 <div class="emojis" v-bind:class="{'show':isshowemoji}">
                     <div class="emoji" v-for="n in 68" ref="emojiItem" @click="chooseEmoji">
-                        <img :src="'../static/images/emoji/'+n+'.png'">
+                        <img :src="'/static/images/emoji/'+n+'.png'">
                     </div>
                 </div>
                 <button class="fl-r sendbtn">
