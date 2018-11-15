@@ -56,6 +56,7 @@
                     btnName:'发送',
                     imgUrl:'http://www.youku.com',
                     url:'http://www.baidu.com',
+                    replyType:'leaveWord',
                     isshow:true,
                     defaultVal:'',
                     workAt:false,
@@ -65,6 +66,7 @@
                     btnName:'回复',
                     imgUrl:'http://www.youku1.com',
                     url:'http://www.baidu1.com',
+                    replyType:'leaveWord',
                     selectId:-1,
                     isshow:true,
                     defaultVal:'',
@@ -108,10 +110,7 @@
             },
             getLeaveWords(){
                 axios.get('/api/v1/leaveWordList').then((res)=>{
-                    if(res.data.code == 403 || res.data.code == 408){
-                        this.words = res.data.data.replies
-                        this.reply.isshow = false;
-                    }else if(res.data.code == 201){
+                    if(res.data.code == 201){
                         this.$toast.top(res.data.msg)
                     }else if(res.data.code == 200){
                         this.words = res.data.data.replies
@@ -157,7 +156,7 @@
             fabulous(id){
                 axios.get('/api/v1/leaveWord/fabulous/'+id).then((res)=>{
                     if(res.data.code == 403 || res.data.code == 408){
-                        this.$toast.top('登陆超时，请重新登陆')
+                        this.$toast.top('您还未登录哦')
                     }else if(res.data.code == 201){
                         this.$toast.top(res.data.msg)
                     }else if(res.data.code == 200){

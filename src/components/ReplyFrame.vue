@@ -101,9 +101,37 @@
                 this.pics.splice(index, 1)   //删除一个图片
             },
             sendWords(){
+                if(this.typeData.replyType == 'leaveWord'){
+                    this.sendLeaveWords()
+                }else{
+                    this.sendCommentWords()
+                }
+            },
+            sendLeaveWords(){
                 let content = this.$refs.leaveContent.innerHTML
                 let postData = {r_content:content,pics:this.pics,master_id:this.typeData.master_id}
                 axios.post('/api/v1/leaveAdd',postData).then((res)=>{
+                    if(res.data.code == 403 || res.data.code == 408){
+                        this.$router.push({path:'/login'})
+                    }else if(res.data.code == 201){
+                        this.$toast.top(res.data.msg)
+                    }else if(res.data.code == 200){
+                        this.$toast.top(res.data.msg)
+                        this.$refs.leaveContent.innerHTML = ''
+                        this.pics = []
+                        this.$emit('initList')  //调用父组件刷新留言列表方法
+                    }else{
+                        this.$toast.top('网络错误，请稍后重试')
+                    }
+                    this.$refs.leaveContent.innerHTML = ''
+                }).catch((error)=>{
+                    this.$toast.top('网络错误，请稍后重试')
+                })
+            },
+            sendCommentWords(){
+                let content = this.$refs.leaveContent.innerHTML
+                let postData = {r_content:content,pics:this.pics,master_id:this.typeData.master_id,article_id:this.typeData.article_id}
+                axios.post('/api/v1/commentAdd',postData).then((res)=>{
                     if(res.data.code == 403 || res.data.code == 408){
                         this.$router.push({path:'/login'})
                     }else if(res.data.code == 201){

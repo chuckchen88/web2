@@ -16,6 +16,7 @@ import Blog from '@/views/Blog'
 import BlogDetails from '@/views/BlogDetails'
 import AccountActive from '@/views/AccountActive'  //账户激活页
 import ShowMessage from '@/views/ShowMessage'  //公共消息提示页
+import PersonalArticle from '@/views/PersonalArticle'  //公共消息提示页
 
 Vue.use(Router)
 //Vue.use(Meta)
@@ -78,6 +79,11 @@ export default new Router({
             component: PersonalNews
         },
         {
+            path: '/personal/article',
+            name: 'PersonalArticle',
+            component: PersonalArticle
+        },
+        {
             path: '/personal/news/newsdetails/:id',
             name: 'NewsDetails',
             component: NewsDetails
@@ -90,6 +96,11 @@ export default new Router({
         {
             path: '/blog/BlogDetails/:id',
             name: 'BlogDetails',
+            component: BlogDetails
+        },
+        {
+            path: '/blog/BlogDetails/:id/:commentId',
+            name: 'BlogDetailsByCommentId',
             component: BlogDetails
         },
         {

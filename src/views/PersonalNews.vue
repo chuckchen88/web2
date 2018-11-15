@@ -8,7 +8,7 @@
         <div class="tab-contents">
             <div class="tab-content">
                 <ul>
-                    <a href="javascript:;" v-for="myNew in myNews" @click="goDetails(myNew.reply_id, myNew.type)">
+                    <a href="javascript:;" v-for="myNew in myNews" @click="goDetails(myNew.reply_id, myNew.type, myNew.article_id)">
                         <li v-show="myNew.type =='leaveReply' || myNew.type == 'artReply'|| myNew.type == 'artAt' || myNew.type == 'fabulous'" @click="hasReadOne(myNew._id)">
                             <span class="fl-l con">
                                 <h1><span v-if="myNew.type == 'leaveReply'">留言回复</span><span v-if="myNew.type == 'artReply'">文章回复</span><label class="fl-r t">{{ myNew.create_at | moment }}<i v-show="!myNew.has_read"></i></label></h1>
@@ -115,9 +115,11 @@
                         that.$toast.top('网络错误，请稍后重试');
                     });
             },
-            goDetails(id, type){console.log(type)
+            goDetails(id, type, article_id){
                 if(type == 'leaveReply'){
                     this.$router.push({path:'/leavewords/'+id})
+                }else{
+                    this.$router.push({path:'/blog/BlogDetails/'+article_id+'/'+id})
                 }
             },
             getSysNews(){

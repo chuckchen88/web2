@@ -5,50 +5,30 @@
             <div class="work-list">
                 <h2>公司作品</h2>
                 <ul>
-                    <li>
-                        <div class="img"><img src="../assets/images/works_03.jpg"></div>
+                    <li v-for="work in worklist" v-if="work.type == 0">
+                        <a :href="work.work_src">
+                        <div class="img"><img :src="work.main_img"></div>
                         <div class="txt">
-                            <h3>上海中世建设咨询有限公司(官网)</h3>
-                            <p>中世官网前端部分是由本人独立完成的，此网站
-                                也是本人人生第一个完整的作品。功能相对来说
-                                比较简单，但对于当时的技术能力，</p>
+                            <h3>{{work.work_name}}</h3>
+                            <p>{{work.work_desc}}</p>
                         </div>
                         <div class="clear"></div>
-                    </li>
-                    <li>
-                        <div class="img"><img src="../assets/images/works_03.jpg"></div>
-                        <div class="txt">
-                            <h3>上海中世建设咨询有限公司(官网)</h3>
-                            <p>中世官网前端部分是由本人独立完成的，此网站
-                                也是本人人生第一个完整的作品。功能相对来说
-                                比较简单，但对于当时的技术能力，</p>
-                        </div>
-                        <div class="clear"></div>
+                        </a>
                     </li>
                 </ul>
             </div>
             <div class="work-list">
                 <h2>个人作品</h2>
                 <ul>
-                    <li>
-                        <div class="img"><img src="../assets/images/works_03.jpg"></div>
-                        <div class="txt">
-                            <h3>上海中世建设咨询有限公司(官网)</h3>
-                            <p>中世官网前端部分是由本人独立完成的，此网站
-                                也是本人人生第一个完整的作品。功能相对来说
-                                比较简单，但对于当时的技术能力，</p>
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <div class="img"><img src="../assets/images/works_03.jpg"></div>
-                        <div class="txt">
-                            <h3>上海中世建设咨询有限公司(官网)</h3>
-                            <p>中世官网前端部分是由本人独立完成的，此网站
-                                也是本人人生第一个完整的作品。功能相对来说
-                                比较简单，但对于当时的技术能力，</p>
-                        </div>
-                        <div class="clear"></div>
+                    <li v-for="work in worklist" v-if="work.type == 1">
+                        <a :href="work.work_src">
+                            <div class="img"><img :src="work.main_img"></div>
+                            <div class="txt">
+                                <h3>{{work.work_name}}</h3>
+                                <p>{{work.work_desc}}</p>
+                            </div>
+                            <div class="clear"></div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -62,17 +42,37 @@
     import './../assets/css/common.css'
     import NavHeader from '@/components/Header.vue'
     import NavFooter from '@/components/Footer.vue'
+    import axios from 'axios'
     export default {
         data(){
             return{
                 shownavcolor:true,
-                shownavname:'作品'
+                shownavname:'作品',
+                worklist:[]
             }
         },
         components:{
             NavHeader,
             NavFooter
         },
+        mounted(){
+            this.getWorkList()
+        },
+        methods:{
+            getWorkList(){
+                axios.get('/api/v1/worklist').then((res)=>{
+                    if(res.data.code == 201){
+                        this.$toast.top(res.data.msg)
+                    }else if(res.data.code == 200){
+                        this.worklist = res.data.data
+                    }else{
+                        this.$toast.top('网络错误，请稍后重试')
+                    }
+                }).catch((error)=>{
+                    this.$toast.top('网络错误，请稍后重试')
+                })
+            }
+        }
     }
 </script>
 

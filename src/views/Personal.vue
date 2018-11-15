@@ -24,9 +24,11 @@
                             我的消息<div class="fl-r n"><span v-show="notReadCount">{{notReadCount}}</span><img v-show="!notReadCount" class="fl-r arr" src="../assets/images/arr.png"></div>
                         </li>
                     </router-link>
+                    <router-link to="/personal/article">
                     <li>
-                        我的收藏<img class="fl-r arr" src="../assets/images/arr.png">
+                        我赞过的文章<img class="fl-r arr" src="../assets/images/arr.png">
                     </li>
+                    </router-link>
                 </ul>
             </div>
             <div class="list">
