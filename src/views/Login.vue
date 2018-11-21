@@ -52,8 +52,6 @@
                         }else if(response.data.code == 202){   //提示 未激活
                             that.$router.push({name:'ShowMessage',params:{con:response.data.msg}});
                         }else if(response.data.code == 200){
-                            console.log('登陆成功');  //存储用户数据
-                            console.log(response.data.data);
                             that.$store.commit('$_setStorage', {user: response.data.data})
                             that.$toast.top('登陆成功');
                             that.$router.push({path:'/personal'})

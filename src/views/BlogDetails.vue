@@ -97,7 +97,8 @@
                 beforeId:-1,   // 天才
                 words:[],
                 userData:{},  //用户登录信息
-                isLogin:false
+                isLogin:false,
+                idIsExsit:false
             }
         },
         mounted(){
@@ -108,7 +109,16 @@
             let that = this
             if(that.$route.params.commentId){
                 setTimeout(function(){
-                    that.goAnchor('#a'+that.$route.params.commentId)
+                    for(var i = 0;i < that.words.length;i++){
+                        if(that.words[i]['id'] == that.$route.params.commentId){console.log(that.words[i]['id'])
+                            that.idIsExsit = true
+                        }
+                    }
+                    if(that.idIsExsit){console.log('hi')
+                        that.goAnchor('#a'+that.$route.params.commentId)
+                    }else{
+                        that.$toast.top('回复不存在或已被删除')
+                    }
                 },500)
             }
         },

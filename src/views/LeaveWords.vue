@@ -25,7 +25,7 @@
                             <div class="list-btns">
                                 <i><img @click="fabulous(word.id)" class="fl-l" src="../assets/images/love-icon.png">{{word.fabulous}}</i>
                                 <i><img @click="showEmoji($event,index,word.user._id)" :data-loginname="word.user.loginname" src="../assets/images/reply-icon.png"></i>
-                                <i v-show="userData && userData.user._id == word.user._id"><img @click="deleteOne(word.id)" src="../assets/images/del-icon.png"></i>
+                                <i v-show="userData && userData._id == word.user._id"><img @click="deleteOne(word.id)" src="../assets/images/del-icon.png"></i>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -76,7 +76,8 @@
                 beforeId:-1,   // 天才
                 words:[],
                 userData:{},  //用户登录信息
-                isLogin:false
+                isLogin:false,
+                idIsExsit:false
             }
         },
         components:{
@@ -87,13 +88,25 @@
         mounted(){
             this.getLeaveWords()
             this.checkLogin()
-            this.userData = this.$store.getters.getStorage
+            if(this.$store.getters.getStorage){
+                this.userData = this.$store.getters.getStorage.user
+            }
             let that = this
             if(that.$route.params.id){
                 setTimeout(function(){
-                    that.goAnchor('#a'+that.$route.params.id)
+                    for(var i = 0;i < that.words.length;i++){
+                        if(that.words[i]['id'] == that.$route.params.id){
+                            that.idIsExsit = true
+                        }
+                    }
+                    if(that.idIsExsit){
+                        that.goAnchor('#a'+that.$route.params.id)
+                    }else{
+                        that.$toast.top('回复不存在或已被删除')
+                    }
                 },500)
             }
+            console.log(this.userData)
         },
         methods:{
             showEmoji(e,id,master_id){

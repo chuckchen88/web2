@@ -10,7 +10,7 @@ body{
 }
 .header.navcolor{
     position:relative;
-    background:#30220f;
+    background:rgba(48, 34, 15, 0.8);
 }
 .navs .nav-icon{
     position:absolute;
@@ -144,7 +144,7 @@ body{
     background:white;
 }
 .home .about .txt{
-    padding-top:3em;
+    padding-top:6em;
     text-align:center;
 }
 .home .about .txt h1{
@@ -158,7 +158,7 @@ body{
 }
 .home .about .icons{
     padding-top:3em;
-    padding-bottom:4em;
+    padding-bottom:8em;
 }
 .home .about .icons li{
     width:33.3%;
@@ -173,7 +173,7 @@ body{
     font-size:.8em;
 }
 .home .works{
-    padding:3em 0;
+    padding:0 0;
 }
 .home .works .txt{
     text-align:center;
@@ -188,14 +188,13 @@ body{
     height:.1em;
 }
 .home .works .work-img{
-    background:white;
     margin-top:2em;
     margin-bottom:1em;
     padding:.5em 0;
 }
 .home .contact{
     background:white;
-    padding:3em 0;
+    padding:5em 0;
 }
 .home .contact .txt{
     text-align:center;
@@ -532,7 +531,7 @@ body{
     padding:.2em;
 }
 .chat .input .emoji img{
-    width:1.5em;
+    width:2.2em;
 }
 /*personal*/
 .personal .top{

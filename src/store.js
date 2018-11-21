@@ -18,6 +18,10 @@ const store = new Vuex.Store({
                 state.user = JSON.parse(localStorage.getItem(key))
             }
             return state.user
+        },
+        getMyNews:function(state){
+            state.myNews = JSON.parse(localStorage.getItem('myNews'))
+            return state.myNews
         }
     },
     mutations: {
@@ -28,6 +32,14 @@ const store = new Vuex.Store({
         $_removeStorage (state) {
             state.user = null
             localStorage.removeItem(key)
+        },
+        $_setMyNews (state) {
+            state.myNews = true
+            localStorage.setItem('myNews', JSON.stringify(true))
+        },
+        $_removeMyNews (state) {
+            state.myNews = false
+            localStorage.removeItem('myNews')
         }
     }
 })

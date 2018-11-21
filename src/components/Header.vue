@@ -4,7 +4,7 @@
             <div class="content">
                 <div class="nav-icon fl-l" @click="showNav"><img width="24" style="margin-top:.2em;" src="../assets/images/nav-icon.png"></div>
                 <div class="nav-title text-center">{{navname}}</div>
-                <div class="per-icon fl-r"><i v-show="this.$store.state.myNews" class="red-dot"></i><router-link to="/personal"><img width="22" style="margin-top:.2em;" src="../assets/images/per-icon.png"></router-link></div>
+                <div class="per-icon fl-r"><i v-show="myNews" class="red-dot"></i><router-link to="/personal"><img width="22" style="margin-top:.2em;" src="../assets/images/per-icon.png"></router-link></div>
             </div>
             <div class="clear"></div>
         </div>
@@ -24,12 +24,15 @@
        props: {showcolor:Boolean,navname:String},
         data(){
             return{
-                isshow:false
+                isshow:false,
+                myNews:this.$store.state.myNews
             }
         },
         mounted(){
-
-
+           if(this.$store.getters.getMyNews){
+               this.$store.state.myNews = this.$store.getters.getMyNews
+               this.myNews = this.$store.getters.getMyNews
+           }
         },
         methods:{
             showNav(){

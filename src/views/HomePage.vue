@@ -14,7 +14,7 @@
                 <div class="more"><img width="26" src="../assets/images/more_arr.png"></div>
             </div>
             <div class="about">
-                <a href="">
+                <router-link to="/blog">
                     <div class="content">
                         <div class="txt">
                             <h1>MY BLOG</h1>
@@ -47,16 +47,19 @@
                             </ul>
                         </div>
                     </div>
-                </a>
+                </router-link>
             </div>
             <div class="works">
-                <div class="content">
-                    <div class="txt">
-                        <h1>MY WORKS</h1>
-                        <i></i>
+                <router-link to="/works">
+                    <div class="content" style="padding:3em 0;">
+                        <div class="txt">
+                            <h1>MY WORKS</h1>
+                            <i></i>
+                        </div>
+
+                    <div class="work-img"><img width="100%" src="../assets/images/home_works.jpg"></div>
                     </div>
-                </div>
-                <div class="work-img"><img width="100%" src="../assets/images/home_works.jpg"></div>
+                </router-link>
             </div>
             <div class="contact">
                 <div class="content">
@@ -77,11 +80,11 @@
                                 QQ Group：311497335
                             </li>
                             <li>
-                                <img src="../assets/images/home_17.png">&nbsp;
-                                <img src="../assets/images/home_19.png">&nbsp;
-                                <img src="../assets/images/home_22.png">&nbsp;
-                                <img src="../assets/images/home_24.png">&nbsp;
-                                <img src="../assets/images/home_26.png">
+                                <!--img src="../assets/images/home_17.png"-->
+                                <a href="http://weibo.com/u/3824642305"><img src="../assets/images/home_19.png"></a>
+                                <a href="https://github.com/chuckchen88"><img src="../assets/images/home_22.png"></a>
+                                <a href="http://t.cn/Rig3aUs"><img src="../assets/images/home_24.png"></a>
+                                <a href="http://i.youku.com/i/UNTg0OTQ4MTYw"><img src="../assets/images/home_26.png"></a>
                             </li>
                         </ul>
                     </div>
